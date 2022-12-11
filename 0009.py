@@ -10,6 +10,11 @@ from datetime import datetime as dt
 
 t0 = dt.now()
 
+# a^2 + b^2 = c^2
+# b = 1000 - a - c
+# a^2 + (1000 - a - c)^2 = c^2
+# simplifies to c in terms of a as below.
+
 for a in range(998):
     c = (a**2 - 1000*a + 5e5) / (1000 - a)
     b = 1000 - a - c
