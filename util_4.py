@@ -27,11 +27,12 @@ def is_prime(n):
 def prime_factors(n):
     if type(n) != int and type(n) != float:
         return []
-    if n < 2:
-        return []
-    l = int(math.sqrt(n))
+    if n < 4:
+        return [n]
+    # if n == 2 or n == 3 or n == 5:
+    #     return [n]
 
-    arr = np.arange(3,n,2)
+    arr = np.arange(3,n+1,2)
 
     arr = np.insert(arr, 0, 2)
 
@@ -48,6 +49,7 @@ def prime_factors(n):
 
 
     return primes
+
 
 def primes_below(n):
     if type(n) != int and type(n) != float:

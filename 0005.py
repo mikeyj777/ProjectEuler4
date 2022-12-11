@@ -9,4 +9,17 @@
 
 import util_4
 
-print(util_4.prime_factors(20))
+max_num = 20
+
+primes = dict.fromkeys(util_4.primes_below(20), 0)
+
+for n in range(2,max_num + 1):
+    pf = util_4.prime_factors(n)
+    pf_dict = dict.fromkeys(pf, 0)
+    for k in pf_dict.keys():
+        cnt = pf.count(k)
+        if pf_dict[k] > cnt:
+            pf_dict[k] = cnt
+
+
+apple = 4
