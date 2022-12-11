@@ -26,4 +26,4 @@ for n in range(1000000):
     if fib_val % 2 == 0:
         tot += fib_val
 
-print(tot, dt.now() - t0)
+print(tot, dt.now() - t0) # 4613732
