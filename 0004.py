@@ -35,7 +35,7 @@ while ulim >= 100:
     if len(pals) > 0:
         pals = np.asarray(pals)
         pals = np.sort(pals)
-        print(pals[-1], dt.now() - t0) #906609
+        print(pals[-1], dt.now() - t0)
         break
     ulim -= 100
     llim -= 100
