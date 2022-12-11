@@ -1,4 +1,4 @@
 *.cfg
 venv/
 *.pyc
-z_small_tests/.*
+*small_tests*.*

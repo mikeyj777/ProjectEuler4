@@ -111,6 +111,8 @@ def estimate_number_with_n_primes_below_it(n):
     max_iter = 60
     v = n
     iter = 0
+
+    # https://math.stackexchange.com/a/3678200/458712
     while iter <= max_iter:
         iter += 1
         x = v*math.log(v)
