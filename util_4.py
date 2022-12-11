@@ -27,6 +27,8 @@ def is_prime(n):
 def prime_factors(n):
     if type(n) != int and type(n) != float:
         return []
+    if n < 2:
+        return []
     if n < 4:
         return [n]
     # if n == 2 or n == 3 or n == 5:
@@ -46,7 +48,6 @@ def prime_factors(n):
             primes.append(arr[0])
         else:
             arr = arr[arr % arr[0] != 0]
-
 
     return primes
 
