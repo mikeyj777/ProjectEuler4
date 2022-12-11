@@ -2,6 +2,8 @@ import math
 import numpy as np
 from datetime import datetime as dt
 
+# from solver import Solver
+
 def is_prime(n):
     if type(n) != int and type(n) != float:
         return False
@@ -87,3 +89,42 @@ def primes_below(n):
     primes.extend(arr)
 
     return primes
+
+def primes_below_estimate(n):
+    if n < 2:
+        return 0
+    if n < 3:
+        return 1
+    if n < 5:
+        return 2
+
+    return n / math.log(n - 1)
+
+def estimate_number_with_n_primes_below_it(n):
+    if type(n) != int and type(n) != float:
+        return None
+    if n < 1:
+        return 1
+    if n == 1:
+        return 2
+    x_old = 0
+    max_iter = 60
+    v = n
+    iter = 0
+    while iter <= max_iter:
+        iter += 1
+        x = v*math.log(v)
+        maxDiff = 0.5
+        while x - x_old > maxDiff:  # strictly monotonous
+            x_old = x
+            x = v*math.log(x)
+        p_count_test = len(primes_below(x))
+        if p_count_test >= n:
+            return math.ceil(x)
+        v *= 2
+
+        #monotonically increasing above n = 1, hopefully no infinite loop
+        iter = 0
+
+    return math.ceil(x)
+    
