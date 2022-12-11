@@ -1,5 +1,6 @@
 import math
 import numpy as np
+from datetime import datetime as dt
 
 def is_prime(n):
     if type(n) != int and type(n) != float:
@@ -48,4 +49,38 @@ def prime_factors(n):
 
     return primes
 
-print(prime_factors(20))
+def primes_below(n):
+    if type(n) != int and type(n) != float:
+        return []
+    if n < 2:
+        return []
+    if n < 3:
+        return [2]
+    if n < 5:
+        return [2, 3]
+    if n == 5:
+        return [2, 3, 5]
+    
+    l = int(math.sqrt(n))
+
+    arr = np.arange(5, n, 2)
+
+    primes = [2,3]
+
+    arr = arr[arr % 3 != 0]
+
+    num = 6
+    while num <= l:
+        pos = num+1
+        neg = num-1
+        if neg in arr:
+            primes.append(neg)
+            arr = arr[arr % neg != 0]
+        if pos in arr:
+            primes.append(pos)
+            arr = arr[arr % pos != 0]
+        num += 6
+    
+    primes.extend(arr)
+
+    return primes
