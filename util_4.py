@@ -90,7 +90,7 @@ def primes_below(n):
 
     return primes
 
-def primes_below_estimate(n):
+def primes_below_simple_estimate(n):
     if n < 2:
         return 0
     if n < 3:
