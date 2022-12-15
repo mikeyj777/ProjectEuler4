@@ -129,4 +129,34 @@ def estimate_number_with_n_primes_below_it(n):
         iter = 0
 
     return math.ceil(x)
+
+def triangular_number(n):
+    return n*(n+1)/2
+
+def divisors(n):
+    facts = prime_factors(n)
+    facts_unique = set(facts)
+
+    div_dict = dict.fromkeys(facts_unique,0)
+    for k in facts_unique:
+        div_dict[k] = facts.count(k)
     
+    val = n
+    divs = [1]
+    for fact in facts:
+        while val > 1:
+            divs.append(val/fact)
+    facts.append(1)
+    sorted(facts)
+    divs = []
+    for n1 in facts:
+        for n2 in facts:
+            t = n1 * n2
+            if n / t % 1 ==0:
+                divs.append(t)
+    
+    divs.append(n)
+    
+    return list(set(divs))
+
+# print(divisors(4000))
