@@ -53,12 +53,13 @@ for n in range(2,max_num + 1):
             
             primes_list = []
             for k,v in primes.items():
-                for _ in range(v):
-                    primes_list.extend(k)
-                for i in len(primes_list):
-                    divisor_count = permutations(primes_list, i)
-                if divisor_count >= max_num:
-                    k_to_v = {k**v for k,v in primes.items()}
-                    prod = np.prod(list(k_to_v))
-                    print(f'prod: {prod}.  divisors: {divisor_count}. time: {dt.now - t0}')
-                    sys.exit()
+                list_of_ks = k * [v]
+                primes_list.extend(list_of_ks)
+            divisor_count = 0
+            for i in len(primes_list):
+                divisor_count += permutations(primes_list, i)
+            if divisor_count >= max_num:
+                k_to_v = {k**v for k,v in primes.items()}
+                prod = np.prod(list(k_to_v))
+                print(f'prod: {prod}.  divisors: {divisor_count}. time: {dt.now - t0}')
+                sys.exit()
